@@ -1,33 +1,38 @@
-function Drawer() {
+function Drawer({ onCloseDrawer, items = [], onRemoveItem }) {
+  const removeItem = (obj) => {
+    onRemoveItem(obj);
+  };
   return (
-    <div style={{ display: 'none' }} className="overlay">
+    <div className="overlay">
       <div className="drawer">
         <h2 className="d-flex justify-between mb-30">
-          Cart <img className=" cu-p" src="/img/btn-remove.svg" alt="Remove" />
+          Cart{' '}
+          <img
+            onClick={onCloseDrawer}
+            className=" cu-p"
+            src="/img/btn-remove.svg"
+            alt="Close cart"
+          />
         </h2>
 
         <div className="items">
-          <div className="cartItem d-flex align-center mb-20">
-            <div
-              style={{ backgroundImage: 'url(/img/sneakers/1.jpg)' }}
-              className="cartItemImg"></div>
-            <div className="mr-20 flex">
-              <p className="mb-5">Men's sneakers Nike Air Max 270</p>
-              <b>12 999 rub.</b>
+          {items.map((obj) => (
+            <div className="cartItem d-flex align-center mb-20">
+              <div
+                style={{ backgroundImage: `url(${obj.imageUrl})` }}
+                className="cartItemImg"></div>
+              <div className="mr-20 flex">
+                <p className="mb-5">{obj.title}</p>
+                <b>{obj.price} rub.</b>
+              </div>
+              <img
+                onClick={() => removeItem(obj)}
+                className="removeBtn"
+                src="/img/btn-remove.svg"
+                alt="Remove"
+              />
             </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
-          </div>
-
-          <div className="cartItem d-flex align-center mb-20">
-            <div
-              style={{ backgroundImage: 'url(/img/sneakers/1.jpg)' }}
-              className="cartItemImg"></div>
-            <div className="mr-20 flex">
-              <p className="mb-5">Men's sneakers Nike Air Max 270</p>
-              <b>12 999 rub.</b>
-            </div>
-            <img className="removeBtn" src="/img/btn-remove.svg" alt="Remove" />
-          </div>
+          ))}
         </div>
 
         <div className="cartTotalBlock">
