@@ -2,18 +2,24 @@ import { useState, useEffect, useContext } from 'react';
 
 import styles from './Card.module.scss';
 
-function Card({ title, price, imageUrl, onClickFavorite, onAddToCart }) {
+function Card({ id, title, price, imageUrl, onClickFavorite, onAddToCart, favorite = false }) {
   const [isAdded, setIsAdded] = useState(false);
+  const [isFavorite, setIsFavorite] = useState(favorite);
 
   const addToCart = () => {
-    onAddToCart({ title, price, imageUrl });
+    onAddToCart({ id, title, price, imageUrl });
     setIsAdded(!isAdded);
+  };
+
+  const addToFavorite = () => {
+    onClickFavorite({ id, title, price, imageUrl });
+    setIsFavorite(!isFavorite);
   };
 
   return (
     <div className={styles.card}>
-      <div className={styles.favorite} onClick={onClickFavorite}>
-        <img src="/img/heart-unliked.svg" alt="Unliked" />
+      <div className={styles.favorite} onClick={addToFavorite}>
+        <img src={isFavorite ? '/img/liked.svg' : '/img/unliked.svg'} alt="Unliked" />
       </div>
       <img width={133} height={112} src={imageUrl} alt="Sneakers" />
       <h5>{title}</h5>
@@ -23,7 +29,7 @@ function Card({ title, price, imageUrl, onClickFavorite, onAddToCart }) {
           <b>{price} rub.</b>
         </div>
         <img
-          class={styles.plus}
+          className={styles.plus}
           onClick={addToCart}
           src={isAdded ? '/img/btn-checked.svg' : '/img/btn-plus.svg'}
           alt="Plus"
