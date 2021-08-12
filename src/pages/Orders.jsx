@@ -1,4 +1,6 @@
 import Card from '../components/Card';
+import AppContext from  '../context';
+import React from 'react';
 
 function Orders({items, onAddToOrders}) { 
   return (

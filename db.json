@@ -1,0 +1,50 @@
+{
+  "items": [    
+      {
+      "id": "1",
+      "title": "Men's sneakers Nike Blazer Mid Suede",
+      "price": 12999,
+      "imageUrl": "/img/sneakers/1.jpg"
+      },
+      {
+      "id": "2",
+      "title": "Men's sneakers Nike Air Max 270",
+      "price": 15300,
+      "imageUrl": "/img/sneakers/2.jpg"
+      },
+      {
+      "id": "3",
+      "title": "Men's sneakers Nike Blazer Mid Suede",
+      "price": 8499,
+      "imageUrl": "/img/sneakers/3.jpg"
+      },
+      {
+      "id": "4",
+      "title": "Men's sneakers Puma X Aka Boku Future Rider",
+      "price": 8999,
+      "imageUrl": "/img/sneakers/4.jpg"
+      },
+      {
+      "id": "5",
+      "title": "Men's sneakers Under Armour Curry 8",
+      "price": 15199,
+      "imageUrl": "/img/sneakers/5.jpg"
+      },
+      {
+      "id": "6",
+      "title": "Men's sneakers Nike Kyrie 7",
+      "price": 11299,
+      "imageUrl": "/img/sneakers/6.jpg"
+      },
+      {
+      "id": "7",
+      "title": "Men's sneakers Nike LeBron XVIII",
+      "price": 16499,
+      "imageUrl": "/img/sneakers/7.jpg"
+      }      
+  ],
+
+  "cart": [],
+  "favorites": [],
+  "orders": []
+}
