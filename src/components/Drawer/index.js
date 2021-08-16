@@ -1,9 +1,12 @@
-import Info from './Info';
 import { useState, useContext } from 'react';
-import AppContext from './../context';
 
-function Drawer({ onCloseDrawer, items = [], onRemoveItem, onAddToOrders }) {
-  const { setCartItems, orderId } = useContext(AppContext);
+import Info from '../Info';
+import AppContext from '../../context';
+
+import styles from './Drawer.module.scss';
+
+function Drawer({ onCloseDrawer, items = [], onRemoveItem, onAddToOrders, opened }) {
+  const { setCartItems, orderId, totalPrice } = useContext(AppContext);
   const [isOrderComplete, setIsOrderComplete] = useState(false);
 
   const onClickOrder = (items) => {
@@ -11,11 +14,11 @@ function Drawer({ onCloseDrawer, items = [], onRemoveItem, onAddToOrders }) {
     setCartItems([]);
     onAddToOrders(items);
   };
+
   return (
-    <div className="overlay">
-      <div className="drawer">
+    <div className={`${styles.overlay} ${opened ? styles.overlayVisible : ''}`}>
+      <div className={styles.drawer}>
         <h2 className="d-flex justify-between mb-30">
-          Cart{' '}
           <img
             onClick={onCloseDrawer}
             className=" cu-p"
@@ -26,7 +29,7 @@ function Drawer({ onCloseDrawer, items = [], onRemoveItem, onAddToOrders }) {
 
         {items.length > 0 ? (
           <div className="d-flex flex-column flex">
-            <div className="items">
+            <div className="items flex">
               {items.map((obj, i) => (
                 <div key={i} className="cartItem d-flex align-center mb-20">
                   <div
@@ -50,12 +53,12 @@ function Drawer({ onCloseDrawer, items = [], onRemoveItem, onAddToOrders }) {
                 <li>
                   <span>Total:</span>
                   <div></div>
-                  <b>21 498 rub.</b>
+                  <b>{totalPrice} rub.</b>
                 </li>
                 <li>
                   <span>Tax 5%:</span>
                   <div></div>
-                  <b>1074 rub.</b>
+                  <b>{Math.round(totalPrice * 0.05)} rub.</b>
                 </li>
               </ul>
               <button onClick={() => onClickOrder(items)} className="greenButton">

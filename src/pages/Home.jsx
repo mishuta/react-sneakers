@@ -13,11 +13,11 @@ function Home({items,cartItems,
   const renderItems = () => {
     const filteredItems = items.filter((item) => item.title.toLowerCase().includes(searchValue.toLowerCase()));
    
-    return (isLoading ? [...Array(7)] : filteredItems).map((item, i) => (
+    return (isLoading ? [...Array(8)] : filteredItems).map((item, i) => (
       <Card
         key={i}                
-        onAddToCart={(obj) => addToCart(obj)}
-        onClickFavorite={(obj) => onAddToFavorite(obj)}        
+        onAddToCart={addToCart}
+        onClickFavorite={onAddToFavorite}        
         loading={isLoading}      
         {...item}
       />

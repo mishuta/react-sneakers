@@ -1,6 +1,9 @@
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import AppContext from './../context';
 
 function Header(props) {
+  const { totalPrice } = useContext(AppContext);
   return (
     <header className="d-flex justify-between align-center p-40">
       <Link to="/">
@@ -15,7 +18,7 @@ function Header(props) {
       <ul className="d-flex">
         <li onClick={props.onClickCart} className="mr-30 cu-p">
           <img width={18} heigth={18} src="/img/cart.svg" alt="Cart" />
-          <span>1205 rub.</span>
+          {totalPrice ? <span>{totalPrice} RUB</span> : 'EMPTY'}
         </li>
         <li className="mr-10 cu-p">
           <Link to="/favorites">

@@ -1,8 +1,10 @@
 import Card from '../components/Card';
 import AppContext from  '../context';
-import React from 'react';
+import { useContext } from 'react';
 
-function Orders({items, onAddToOrders}) { 
+
+function Orders() {   
+  const { orderItems, isLoading } = useContext(AppContext);
   return (
     <div className="content p-40">
         <div className="d-flex align-center justify-between mb-40">
@@ -10,9 +12,11 @@ function Orders({items, onAddToOrders}) {
         </div>  
           
         <div className="d-flex flex-wrap">
-        {items.map((item, i) => (
+        {(isLoading ? [...Array(8)] : orderItems).map((item, i) => (
               <Card
-                key={i}                
+                key={i}
+                loading={isLoading}    
+                                 
                 {...item}        
               />
             ))}
