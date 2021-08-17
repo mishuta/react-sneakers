@@ -6,7 +6,7 @@ function Header(props) {
   const { totalPrice } = useContext(AppContext);
   return (
     <header className="d-flex justify-between align-center p-40">
-      <Link to="/">
+      <Link to={process.env.PUBLIC_URL + '/'}>
         <div className="d-flex align-center">
           <img width={40} heigth={40} src="/img/logo.png" alt="logo" />
           <div>
@@ -21,12 +21,12 @@ function Header(props) {
           {totalPrice ? <span>{totalPrice} RUB</span> : 'EMPTY'}
         </li>
         <li className="mr-10 cu-p">
-          <Link to="/favorites">
+          <Link to={process.env.PUBLIC_URL + '/favorites'}>
             <img width={18} heigth={18} src="/img/favorites.svg" alt="Favorites" />
           </Link>
         </li>
         <li>
-          <Link to="/orders">
+          <Link to={process.env.PUBLIC_URL + '/orders'}>
             <img width={18} heigth={18} src="/img/user.svg" alt="User" />
           </Link>
         </li>
